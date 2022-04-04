@@ -26,7 +26,7 @@ class Ball():                               # 小球类
 
     def update(self, dt):                   # 更新小球位置
         for i in range(2):
-            self.pos[i] += self.speed[i]
+            self.pos[i] += self.speed[i] * dt
         if self.pos[1] < 0 or self.pos[1] > HEIGHT:
             self.speed[1] *= -1
 
