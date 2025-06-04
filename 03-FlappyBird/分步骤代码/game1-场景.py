@@ -1,0 +1,56 @@
+import pygame
+import random
+
+# 初始化 Pygame
+pygame.init()
+
+# 游戏窗口设置
+SCREEN_WIDTH = 400
+SCREEN_HEIGHT = 600
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+pygame.display.set_caption("Flappy Bird")
+clock = pygame.time.Clock()
+FPS = 60
+
+# 颜色
+WHITE = (255, 255, 255)
+
+# 加载资源（替换为你的图片路径）
+try:
+    BIRD_IMG = pygame.image.load("assets/bird.png").convert_alpha()
+    PIPE_IMG = pygame.image.load("assets/pipe.png").convert_alpha()
+    BG_IMG = pygame.image.load("assets/background.png").convert()
+    BASE_IMG = pygame.image.load("assets/base.png").convert_alpha()
+except FileNotFoundError:
+    print("资源文件未找到，请确保 assets 文件夹中有 bird.png, pipe.png, background.png, base.png")
+    pygame.quit()
+    exit()
+
+# 游戏变量
+GRAVITY = 0.5
+JUMP_HEIGHT = -10
+PIPE_GAP = 150
+PIPE_SPEED = 3
+
+running = True
+
+while running:
+    # 事件处理
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+    
+    # 绘制
+    screen.blit(BG_IMG, (0, 0))
+    
+    pygame.display.flip()
+    clock.tick(FPS)
+
+pygame.quit()
+
+
+
+
+
+
+
